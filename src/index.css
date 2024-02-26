@@ -90,6 +90,53 @@
 
 
 
+
+
+
+/* Värit kolmannessa teemassa */
+.secretTheme {
+  --clr-light: #d2cbc3;
+  --clr-dark: #363636;
+  --clr-primary: hsl(244, 24%, 40%);
+  --clr-primary-light: hsl(244, 22%, 62%);
+  --clr-secondary: var(--clr-primary-light);
+  --clr-neutral: rgb(110, 110, 110); /* Buttonien, input-kenttien yms. reunat */
+  --clr-neutral-light: rgb(233, 233, 233);
+
+  --clr-text: var(--clr-dark);
+  --clr-headerlink: var(--clr-dark);
+  --clr-header-bg: var(--clr-light);
+  --clr-button-bg: var(--clr-primary);
+  --clr-button-hover: var(--clr-primary-light);
+  --clr-button-hover-text: var(--clr-dark);
+  --clr-button-text: var(--clr-light);
+  --clr-thumb-icon: var(--clr-icon);
+  --clr-title: var(--clr-primary);
+  --clr-heading: var(--clr-primary);
+  --clr-icon: var(--clr-neutral);
+  --clr-footer-bg: var(--clr-dark);
+  --clr-footertext: var(--clr-light);
+  --clr-input-focus: var(--clr-primary);
+  --clr-checked: hsl(116, 36%, 84%);
+  --clr-link-hover: var(--clr-secondary);
+  --clr-bg: var(--clr-light);
+  --clr-tags: var(--clr-light);
+  --clr-comment-bg: var(--clr-neutral-light);
+  --clr-score: var(--clr-primary);
+}
+
+.secretTheme .tag {
+  background-color: var(--clr-primary-light);
+  color: var(--clr-light);
+}
+
+.secretTheme .checked {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+}
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -4,20 +4,19 @@ import {useEffect, useState} from "react";
 import axios from 'axios';
 
 const hearts = require('./symbols/hearts.png');
-const square = require('./symbols/square.png');
+const square = require('./newSymbols/square.png');
 const cross = require('./symbols/cross.png');
 const spiral = require('./symbols/spiral.png');
-const star = require('./symbols/star.png');
-const arrow = require('./symbols/arrow.png');
-const circle = require('./symbols/circle.png');
+const star = require('./newSymbols/star.png');
+const arrow = require('./newSymbols/arrow.png');
+const circle = require('./newSymbols/circle.png');
 const flower = require('./symbols/flower.png');
-const triangle = require('./symbols/triangle.png');
+const triangle = require('./newSymbols/triangle_re.png');
 const club = require('./symbols/club.png');
-const diamond = require('./symbols/diamond.png');
-const hash = require('./symbols/hash.png');
-
-
-
+const diamond = require('./newSymbols/diamond.png');
+const hash = require('./newSymbols/hash.png');
+const astarisk = require('./newSymbols/astarisk.png');
+const check = require('./newSymbols/check.png');
 
 
 
@@ -32,9 +31,9 @@ export default function MakeData(count) {
     kuvat = [
         kuvat[0] = circle,
         kuvat[1] = star,
-        kuvat[2] = club,
+        kuvat[2] = astarisk,
         kuvat[3] = square,
-        kuvat[4] = flower,
+        kuvat[4] = check,
         kuvat[5] = hearts,
         kuvat[6] = hash,
         kuvat[7] = arrow,
@@ -42,12 +41,12 @@ export default function MakeData(count) {
         kuvat[9] = triangle
     ]
 
-        for (let j = 0; j < kuvat.length; j++) {
-            let roww = {
-                music: kuvat[j]
-            };
-            options.push({label: roww.music});
-        }
+    for (let j = 0; j < kuvat.length; j++) {
+        let roww = {
+            music: kuvat[j]
+        };
+        options.push({label: roww.music});
+    }
 
 
     const [data, setData] = useState([]);
@@ -66,20 +65,20 @@ export default function MakeData(count) {
 
      */
 
-/*
-    const backendItems = data.map((item,index) =>
-        let row = {}
-    {
-        ID: index,
-        firstName:item.work1_name,
-        lastName: item.work2_name,
-        email: item.work3_name
-    })
+    /*
+        const backendItems = data.map((item,index) =>
+            let row = {}
+        {
+            ID: index,
+            firstName:item.work1_name,
+            lastName: item.work2_name,
+            email: item.work3_name
+        })
 
- */
+     */
 
 
-        for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
         let row = {
             ID: i,
             firstName: faker.name.firstName(),
@@ -88,32 +87,32 @@ export default function MakeData(count) {
         };
         // options.push({label: row.music, backgroundColor: randomColor()});
 
-         data.push(row);
+        data.push(row);
     }
 
 
 
     let [row, setRow] = useState('');
 
-        /*
-    const rows = data.map((item, k) => {
-        return (
-            <tr key={item.id}>
-                <td>{item.work1_name}</td>
-                <td>{item.work2_name}</td>
-                <td>{item.work3_name}</td>
-            </tr>
-        );
-    });
-         */
+    /*
+const rows = data.map((item, k) => {
+    return (
+        <tr key={item.id}>
+            <td>{item.work1_name}</td>
+            <td>{item.work2_name}</td>
+            <td>{item.work3_name}</td>
+        </tr>
+    );
+});
+     */
 
-/*
-    let rows = data.map((_,index) => {
-        let columnValues = data.map(i => data[index][i])
-        return columnValues
-    })
+    /*
+        let rows = data.map((_,index) => {
+            let columnValues = data.map(i => data[index][i])
+            return columnValues
+        })
 
- */
+     */
 
     let columns = [
         {
@@ -121,35 +120,40 @@ export default function MakeData(count) {
             label: "work1_name",
             accessor: "work1_name",
             minWidth: 100,
-            dataType: "select",
-            options: options
+            dataType: "text",
+            options: options,
         },
         {
             id: "lastName",
             label: "work2_name",
             accessor: "work2_name",
             minWidth: 100,
-            dataType: "select",
+            dataType: "text",
             options: options
         },
         {
             id: "age",
             label: "work3_name",
             accessor: "work3_name",
-            width: 80,
-            dataType: "select",
+            minWidth: 100,
+            dataType: "text",
             options: options,
-        }
+        },
+
         /*
         {
             id: 999999,
-            width: 20,
+            width: 2,
             label: "+",
             disableResizing: true,
             dataType: "null"
         }
 
          */
+
+
+
+
     ];
     let rows = [
         {
@@ -157,7 +161,7 @@ export default function MakeData(count) {
             name: '',
             age: ''
         }
-        ];
+    ];
     return {columns: columns, rows: rows, skipReset: false};
     // return {columns: columns, data: rows, skipReset: false};
 }

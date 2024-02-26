@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import clsx from "clsx";
 import {useTable, useFlexLayout, useResizeColumns, useSortBy} from "react-table";
 import Cell from "./Cell";
@@ -6,6 +6,11 @@ import Header from "./Header";
 import PlusIcon from "./img/Plus";
 import Trash from "./img/Trash";
 import kuva from "./img/circle.png";
+import Slider from "./Slider";
+import slider from "./Slider";
+import ReactSlider from "react-slider";
+import TableSlider from "./TableSlider";
+import {usePopper} from "react-popper";
 
 const defaultColumn = {
     minWidth: 50,
@@ -13,6 +18,7 @@ const defaultColumn = {
     maxWidth: 400,
     Cell: Cell,
     Header: Header,
+    className: 'column',
     sortType: "alphanumericFalsyLast"
 };
 
@@ -160,12 +166,91 @@ export default function Table({columns, data, dispatch: dataDispatch, skipReset}
     }
      */
 
+    const heightRef = useRef(200);
+
+    const [rangeSliderValue, setRangeSliderValue] = useState(500);
+
+    /*
+    const handleChange = (e) => {
+        setRangeSliderValue(e.target.value);
+        setPituus(e.target.value);
+        console.log(slider.get());
+        console.log('moi');
+    };
+     */
+
+    const handleChange = (e) => {
+        setCurrentValue(e);
+        setPituus(currentValue);
+    }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const pituus = parseInt(name);
+        const uusiPituus = (pituus * 3.779527559); // Pixels to mm
+        setPituus(uusiPituus);
+        console.log(`Form submitted, ${uusiPituus}`);
+
+    }
+
+    const handleFontSubmit = (e) => {
+        e.preventDefault();
+        const size = parseInt(name);
+        const uusiSize = (size * 3.779527559); // Pixels to mm
+        setSize(uusiSize);
+        console.log(`Form submitted, ${uusiSize}`);
+    }
+
+
+
+    // const [pituus, newPituus] = useState(100);
+    const [name, setName] = useState('');
+
+    const[pituus, setPituus] = useState(294) ;
+    const[size, setSize] = useState(20) ;
+
+    const [lkm, setLkm] = useState('');
+
+
+
+    const[currentValue, setCurrentValue] = useState(147);
+
+    function smallerRows() {
+        setPituus(100);
+    }
+
+    const apprHeight = useState('');
+
+    /*
+    const handleHeightSubmit = (e) => {
+        e.preventDefault();
+        setPituus(588/lkm);
+        console.log(rows.length);
+    }
+    */
+
+    const handleAutoRowHeight = (e) => {
+        e.preventDefault();
+        setPituus(588/rows.length);
+    }
+
+
+
     return (
         <>
+            <div style={{display: 'flex', justifyContent: 'right', marginTop: 0}}>
+                <button id={'columnBtn'} className={'button'} style={{right: 4, position: 'sticky'}}
+                        onClick={(e) =>
+                            dataDispatch({type: "add_column_to_left", columnId: 99999, focus: true})}>
+                    +
+                </button>
+            </div>
+
             <div {...getTableProps()} className={clsx("table", isTableResizing() && "noselect")}>
                 <div>
                     {headerGroups.map((headerGroup) => (
-                        <div {...headerGroup.getHeaderGroupProps()} className='tr'>
+                        <div {...headerGroup.getHeaderGroupProps()} className='tr' id='headers'>
                             {headerGroup.headers.map((column) => column.render("Header"))}
                         </div>
                     ))}
@@ -176,7 +261,7 @@ export default function Table({columns, data, dispatch: dataDispatch, skipReset}
                         return (
                             <div {...row.getRowProps()} className='tr'>
                                 {row.cells.map((cell) => (
-                                    <div {...cell.getCellProps()} className='td'>
+                                    <div {...cell.getCellProps({style: {height: pituus},})} className='td'>
                                         {cell.render("Cell")}
                                     </div>
                                 ))}
@@ -185,6 +270,53 @@ export default function Table({columns, data, dispatch: dataDispatch, skipReset}
                     })}
                 </div>
             </div>
+
+            <form id="heightForm" onSubmit={handleSubmit}>
+                Change The Height of Table Rows
+                <input placeholder="mm" style={{padding: 10, margin: 5}} onChange={(e) => setName(e.target.value)}
+                       value={name}></input>
+                <button type='submit'>Click to submit</button>
+            </form>
+
+            {/* Doesn't work
+
+            <form id="fontForm" onSubmit={handleFontSubmit}>
+                Change The Font Size
+                <input placeholder="mm" style={{padding: 10, margin: 5}} onChange={(e) => setName(e.target.value)}
+                       value={name}></input>
+                <button type='submit'>Click to submit</button>
+            </form>
+
+
+            <form onSubmit={handleHeightSubmit} id={"rowForm"}>
+                Tell the number of rows you want in the table, so the program can determine
+                an appropriate height for the rows.
+                <input placeholder="lkm" style={{padding: 10, margin: 5}} onChange={(e) => setLkm(e.target.value)}
+                       value={lkm}></input>
+                <button type='submit'>Click to submit</button>
+            </form>
+             */}
+            <button className={'button'} id={'autoBtn'} onClick={handleAutoRowHeight}>Auto Row Heights</button>
+
+            <div id="tableSlider" className='sliderContainer' style={{padding: 20, justifyContent: "center"}}>
+                Change the row height
+                <ReactSlider
+                    defaultValue={0}
+                    value={currentValue}
+                    onChange={(value) => handleChange(value)}
+                    className="customSlider"
+                    trackClassName="customSlider-track"
+                    thumbClassName="customSlider-thumb"
+                    markClassName="customSlider-mark"
+                    min={0}
+                    max={1000}
+                >Change The Table Row Heights </ReactSlider>
+            </div>
+
+
+            {/* <button onClick={hideColumn}>Hide Column</button> */}
+
+
         </>
     );
 }
