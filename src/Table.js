@@ -230,6 +230,7 @@ export default function Table({columns, data, dispatch: dataDispatch, skipReset}
     }
     */
 
+    // Sets the row heights to a height that can fit all in one page.
     const handleAutoRowHeight = (e) => {
         e.preventDefault();
         setPituus(588/rows.length);

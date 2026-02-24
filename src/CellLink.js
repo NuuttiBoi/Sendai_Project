@@ -1,5 +1,5 @@
 import React from "react";
-export default function Relationship({value, backgroundColor}) {
+export default function CellLink({value, backgroundColor}) {
     return (
         <span
             style={{

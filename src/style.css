@@ -2,7 +2,6 @@
 
 
 :root {
-    /* Teemabuttoneissa näkyvät värit  */
     --clr-light-primary:hsl(114, 20%, 32%);
     --clr-light-secondary:#f3f3f3;
     --clr-dark-primary: #1f1f1f;
@@ -39,11 +38,10 @@
     --clr-tags: var(--clr-neutral-light);
     --clr-comment-bg: var(--clr-neutral-light);
 
-    /* Punainen ja vihreä väri virheilmoituksiin yms. yksityiskohtiin */
     --clr-green: rgb(33, 176, 23);
     --clr-red: rgb(195, 0, 0);
 
-    --border-radius: 1.25rem; /* Lomakkeiden, boksien yms. reunat */
+    --border-radius: 1.25rem;
     --border-small: .35rem;
     --icon-width: 2rem;
     --text-small: .9rem;
@@ -52,17 +50,13 @@
 
 
 
-
-
-
-/* Värit tummassa teemassa */
 .darkTheme {
     --clr-light: #dddddd;
     --clr-dark: #1f1f1f;
     --clr-primary: #662ec6;
     --clr-primary-light: #2b2847;
     --clr-secondary: var(--clr-light);
-    --clr-neutral: var(--clr-light); /* Buttonien, input-kenttien yms. reunat */
+    --clr-neutral: var(--clr-light);
     --clr-neutral-light: rgb(53, 53, 53);
 
     --clr-text: var(--clr-light);
@@ -146,14 +140,13 @@ html {
     margin: auto;
 }
 
-/* Otsikko ja hamburger-button */
 .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Linkit */
+
 .main-nav ul {
     list-style-type: none;
     display: flex;
@@ -209,7 +202,6 @@ html {
         align-items: flex-start;
     }
 
-    /* Menulinkit tyyliltään samanlaisiksi */
     .main-nav ul .navlink, .main-nav ul .navlink:visited,
     .main-nav ul button, .main-nav ul button:visited {
         /* background-color: transparent;
@@ -235,7 +227,6 @@ html {
         color: var(--clr-button-hover);
     }
 
-    /* Ei vaikutusta suuremmilla näytöillä */
     .hideOnMobile {
         position: absolute;
         width: 1px;
@@ -259,8 +250,6 @@ html {
 }
 
 
-
-/* RaflaReviewer-otsikko */
 .title, .title:visited {
     color: var(--clr-title);
     font-size: 1.6rem;
@@ -275,14 +264,12 @@ html {
 
 
 
-/* Kaikki buttonit */
 button {
-    line-height: 0; /* keskittää tekstin pystysuunnassa */
+    line-height: 0;
     border: 0;
     cursor: pointer;
 }
 
-/* Tekstibuttonit ja "buttonin" näköiset NavLinkit */
 .button {
     display: block;
     line-height: 0;
@@ -742,14 +729,6 @@ footer p, .footerlink {
 }
 
 
-
-
-
-
-
-
-
-
 .articleButton {
     width: 100%;
     border-radius: var(--border-small);
@@ -761,7 +740,6 @@ footer p, .footerlink {
     gap: 1.5rem .5rem;
 }
 
-/* Pienessä tilassa numero siirtyy tarvittaessa tekstin alle */
 .articleButton span {
     display: inline-block;
 }
@@ -782,7 +760,6 @@ h2 {
     text-align: center;
 }
 
-/* Uuden arvostelun lisäyslomake */
 .popup {
     background-color: var(--clr-bg);
     z-index: 100;
@@ -798,7 +775,6 @@ h2 {
     box-shadow: 0 1rem 3rem rgb(0 0 0 / .25), 0 0 0 100vmax rgb(0 0 0 / .75);
 }
 
-/* Lomake mobiilissa */
 .addNewForm {
     height: 100vh;
     width: 100vw;
@@ -853,7 +829,7 @@ form label:not(.formCheckboxContainer label) {
     position: relative;
 }
 
-/* x-button */
+
 .closeButton {
     display: inline-block;
     width: var(--icon-width);
@@ -867,7 +843,7 @@ form label:not(.formCheckboxContainer label) {
     flex-grow: 0;
 }
 
-/* x-icon */
+
 .closeIcon {
     color: var(--clr-icon)
 }
@@ -880,7 +856,6 @@ form label:not(.formCheckboxContainer label) {
     align-self: flex-end;
 }
 
-/* Lomakkeen input-kentät */
 .formInput {
     flex-grow: 1;
     border-radius: .25rem;
@@ -902,7 +877,6 @@ textarea {
     resize: none;
 }
 
-/* Aktiivisten tekstikenttien reunojen väri */
 textarea:focus, input:focus {
     outline: 2px solid var(--clr-input-focus);
 }
@@ -924,7 +898,7 @@ textarea:focus, input:focus {
     display: grid;
 }
 
-/* Hakukenttä */
+
 .searchBar {
     width: 25em;
     display: flex;
@@ -944,7 +918,6 @@ textarea:focus, input:focus {
     color: var(--clr-neutral);
 }
 
-/* Filter-button */
 .filterButton {
     background-color: transparent;
     max-width: 2.25rem;
@@ -972,7 +945,6 @@ textarea:focus, input:focus {
     padding: 2rem;
 }
 
-/* Estää scrollauksen popupin ollessa auki */
 .locked {
     overflow-y: hidden;
 }
@@ -982,7 +954,6 @@ textarea:focus, input:focus {
     pointer-events: none;
 }
 
-/* Estää buttonien klikkauksen  */
 .locked button:not(.popup button),
 .locked a:not(.popup button),
 .locked .navlink:not(.popup button),
@@ -990,68 +961,10 @@ textarea:focus, input:focus {
     pointer-events: none;
 }
 
-/* Thumbs up-nappien container*/
-.thumbsUpButtons {
-    display: flex;
-    gap: .5rem;
-}
-
-/* Buttonit */
-.thumbsUp, .thumbsDown {
-    display: flex;
-    gap: .25rem;
-    height: 3rem;
-    width: 5rem;
-    cursor: pointer;
-    background-color: transparent;
-    fill: none;
-    border: 1px solid var(--clr-neutral);
-    border-radius: .75rem;
-    padding: .5rem;
-    align-items: center;
-    justify-content: center;
-}
-
-.thumbsUp > *, .thumbsDown > * {
-    display: inline-block;
-}
-
-/* Peukkuiconit */
 .icon-container {
     color: var(--clr-thumb-icon);
 }
 
-.thumbsDown .icon-container {
-    rotate: 180deg;
-    padding-bottom: .2rem;
-}
-
-.thumbsUp p, .thumbsDown p {
-    min-width: 3ch;
-    text-align: center;
-    font-size: var(--text-small);
-}
-
-.thumbsUp p {
-    color: var(--clr-green);
-}
-
-.thumbsDown p {
-    color: var(--clr-red);
-}
-
-/* Klikattu */
-.thumbsUp.clicked > .icon-container > * {
-    --clr-thumb-icon: var(--clr-green);
-    fill: var(--clr-thumb-icon);
-    color: var(--clr-thumb-icon);
-}
-
-.thumbsDown.clicked > .icon-container > * {
-    --clr-thumb-icon: var(--clr-red);
-    fill: var(--clr-thumb-icon);
-    color: var(--clr-thumb-icon);
-}
 
 .back-icon {
     max-width: 3em;
@@ -1062,46 +975,6 @@ textarea:focus, input:focus {
     color: var(--clr-text);
 }
 
-/* Kommenttikenttä */
-.commentForm {
-    display: grid;
-    gap: .5rem;
-    max-width: 40em;
-    margin: 0 auto;
-    padding-bottom: 2rem;
-}
-
-.commentForm label {
-    grid-row: 2;
-}
-
-.commentForm textarea {
-    grid-row: 1;
-}
-
-.commentForm button {
-    max-width: 10rem;
-}
-
-.commentButton {
-    width: 1.35em;
-    border: 1px solid var(--clr-icon);
-    border-radius: var(--border-small);
-}
-
-.commentButton:hover {
-    background-color: transparent;
-    --clr-icon: var(--clr-text);
-}
-
-.commentIcon {
-    padding: .1em;
-    position: relative;
-}
-
-.commentIcon path {
-    stroke: var(--clr-icon);
-}
 
 .username {
     color: var(--clr-secondary);
@@ -1109,29 +982,7 @@ textarea:focus, input:focus {
     font-size: var(--text-small);
 }
 
-.comment__info {
-    max-width: 50%;
-    display: inline-block;
-}
 
-.comment__buttons {
-    max-width: calc(50% - .5rem);
-    position: absolute;
-    right: .5rem;
-    bottom: .5rem;
-    display: flex;
-    gap: .25rem
-}
-
-.comment__info > * {
-    line-height: 1.5;
-}
-
-.comment__date {
-    font-size: var(--text-extra-small);
-}
-
-/* Etusivun tagit */
 .tagContainer {
     display: flex;
     flex-wrap: wrap;
@@ -1140,7 +991,6 @@ textarea:focus, input:focus {
     font-size: var(--text-small);
 }
 
-/* Arvostelusivujen tagit (ei klikattavia) */
 .unclickableTags {
     width: fit-content;
     pointer-events: none;
@@ -1169,71 +1019,7 @@ textarea:focus, input:focus {
     background-color: var(--clr-checked);
 }
 
-/* Kommenttiboksi */
-.commentsContainer {
-    display: grid;
-    gap: 1rem;
-    margin: 0 auto;
-    max-width: 40em; /* ? */
-}
 
-.commentItem {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: .5rem;
-    border-radius: var(--border-small);
-    background-color: var(--clr-comment-bg);
-    position: relative;
-}
-
-/* Arvosanaboksit */
-.scoresContainer {
-    display: grid;
-    background-color: var(--clr-primary-light);
-    gap: .75rem;
-    width: min(38em, 100%);
-    margin: 0 auto;
-    font-weight: 500;
-    padding: .5rem;
-    border-radius: var(--border-small);
-    --clr-score: var(--clr-primary);
-}
-
-.scoreBox {
-    border-radius: var(--border-radius);
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.15rem;
-    color: var(--clr-text);
-    /* background-color: var(--clr-primary-light);
-    border-radius: var(--border-radius);
-    padding: 1.25rem; */
-}
-
-.scoreBox > * {
-    display: inline-block;
-}
-
-.scoreNumber {
-    color: var(--clr-score);
-    font-weight: 600;
-    font-style: italic;
-    font-size: 1.7rem;
-    padding-right: .5rem;
-}
-
-/* Arviot articlessa etusivulla */
-.restaurantArticle .scoresContainer {
-    background-color: transparent;
-    padding: .5rem;
-    font-size: inherit;
-    --clr-score: var(--clr-secondary);
-}
-
-.darkTheme .scoresContainer {
-    --clr-score: var(--clr-light);
-}
 
 .themeButtons {
     display: flex;
@@ -1288,7 +1074,6 @@ textarea:focus, input:focus {
     box-shadow: 0 0 0 .15rem #fff;
 }
 
-/* Piilottaa elementin näkyvistä */
 .visuallyhidden {
     position: absolute;
     width: 1px;
@@ -1304,7 +1089,6 @@ textarea:focus, input:focus {
     border: none;
 }
 
-/* Pienemmillä näytöillä lomake täyttää koko sivun */
 @media only screen and (min-width: 32em) and (min-height: 42em) {
     .addNewForm {
         max-width: 30rem;
@@ -1336,87 +1120,7 @@ textarea:focus, input:focus {
         top: -100%;
     }
 
-    #addReview {
-        grid-column: 4;
-        margin-right: 0;
-    }
 
-    .title {
-        font-size: 1.75rem;
-    }
-
-    .restaurantList {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .restaurantArticle {
-        max-width: none;
-    }
-
-    .searchBar {
-        width: 30em;
-    }
-
-    .commentForm {
-        grid-template-columns: auto 1fr;
-        gap: 1rem .5rem;
-    }
-
-    .commentForm label {
-        grid-row: 1;
-        grid-column: 1;
-        text-align: right;
-    }
-
-    .commentForm textarea {
-        grid-row: 1;
-        grid-column: 2;
-        max-width: none;
-    }
-
-    .commentForm button {
-        grid-column: 2;
-    }
-
-    .tagContainer {
-        justify-content: flex-start;
-    }
-
-    .commentsContainer {
-        max-width: 90%;
-        gap: 0;
-    }
-
-    .commentItem, .darkTheme .commentItem {
-        background-color: transparent;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        width: 70%;
-        gap: .5rem;
-    }
-
-    .comment__buttons {
-        bottom: 1rem;
-        right: 1rem;
-    }
-
-    .commentItem:nth-child(even) {
-        flex-direction: row;
-        justify-self: flex-end;
-    }
-
-    .commentItem:nth-child(even) .comment__buttons {
-        bottom: 1rem;
-        right: 11.3rem;
-        color: red;
-    }
-
-    .commentItem .comment__content {
-        background-color: var(--clr-neutral-light);
-        border-radius: var(--border-small);
-        padding: 1em 1em 2em 1em;
-        flex-grow: 1;
-    }
 
     .main-nav {
         position: relative;
@@ -1515,7 +1219,7 @@ textarea:focus, input:focus {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-/* Kirjauttuminen ja rekistöröityminen*/
+
 .loginButton {
     display: flex;
     align-items: center;
@@ -1595,7 +1299,7 @@ textarea:focus, input:focus {
     margin-right: 2vh;
 }
 
-/* Profiili */
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -1651,4 +1355,258 @@ textarea:focus, input:focus {
 
 .main-nav ul button{
     color: white;
+}
+
+
+
+
+
+
+
+
+.secretTheme .tag {
+    background-color: var(--clr-primary-light);
+    color: var(--clr-light);
+}
+
+.secretTheme .checked {
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+
+
+button {
+    line-height: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.button, .btn-secondary, .btn-primary, .btn-success {
+    display: block;
+    line-height: 0;
+    font-weight: bold;
+    padding: 2em 2.5em;
+    border-radius: 100vmax;
+    max-height: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clr-button-text);
+    background-color: var(--clr-button-bg);
+    box-shadow: 0 1.25em 1em -1em var(--clr-button-bg);
+}
+.delButton{
+    display: block;
+    line-height: 0;
+    font-weight: bold;
+    padding: 2em 2.5em;
+    border-radius: 100vmax;
+    max-height: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clr-button-text);
+    background-color: darkred;
+    box-shadow: 0 1.25em 1em -1em var(--clr-button-bg);
+}
+
+
+
+
+
+
+
+
+.customSlider {
+    max-width: 300px;
+    margin: auto;
+}
+
+.customSlider-track {
+    top: 8px;
+    height: 4px;
+    background: grey;
+}
+
+.customSlider-track.customSlider-track-0 {
+    background: darkgreen;
+}
+
+.customSlider-thumb {
+    cursor: pointer;
+    background: grey;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    outline: none;
+}
+
+.customSlider-thumb:hover {
+    box-shadow: 0 0 0 8px black;
+}
+
+
+.customSlider-mark {
+    cursor: pointer;
+    top: 6px;
+    width: 1.5px;
+    height: 8px;
+    background-color: darkgray;
+}
+
+
+
+
+
+
+.darkTheme .scoresContainer {
+    --clr-score: var(--clr-light);
+}
+
+.themeButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: .6rem;
+    min-height: 1.5rem;
+}
+
+.themeButton {
+    display: block;
+    position: relative;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.themeButton input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.themeButton .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 100vmax;
+    border: 1px solid #fff;
+}
+
+.themeButton .checkmark.light {
+    background: linear-gradient(-50deg, var(--clr-light-primary), var(--clr-light-secondary));
+}
+
+.themeButton .checkmark.dark {
+    background: linear-gradient(-50deg, var(--clr-dark-primary), var(--clr-dark-secondary));
+}
+
+.themeButton .checkmark.secret {
+    background: linear-gradient(-50deg, var(--clr-secret-primary), var(--clr-secret-secondary));
+}
+
+.themeButton input:checked ~ .checkmark {
+    box-shadow: 0 0 0 .15rem #fff;
+}
+
+
+
+
+
+.main-nav {
+    position: relative;
+    padding: 1.5rem 3rem;
+    align-items: center;
+}
+
+.navlink, .navlink:visited {
+    display: grid;
+    place-content: center;
+    min-width: 12rem;
+    border-radius: 100vmax;
+    line-height: 0;
+    font-weight: bold;
+    padding: 1.9em 2.5em;
+    max-height: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clr-primary);
+    background-color: var(--clr-bg);
+    border: 2px solid var(--clr-headerlink);
+}
+
+.navlink:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-light);
+}
+
+.navlink.loginButton, .navlink.loginButton:visited {
+    background-color: var(--clr-button-bg);
+    color: var(--clr-button-text);
+}
+
+.navlink.loginButton:hover {
+    background-color: transparent;
+    border: none;
+    color: var(--clr-button-bg);
+}
+
+.navlink.loginButton.loggedIn {
+    background-color: transparent;
+    border: 0;
+    color: var(--clr-button-bg);
+}
+
+.navlink.loginButton.loggedIn:hover, .darkTheme .navlink.loginButton.loggedIn:hover {
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.darkTheme .navlink.loginButton {
+    border: 2px solid var(--clr-button-bg);
+    background-color: var(--clr-button-bg);
+    color: var(--clr-button-text);
+}
+
+.darkTheme .navlink.loginButton.loggedIn:hover {
+    border: 0;
+    color: var(--clr-button-text);
+}
+
+.darkTheme .main-nav ul .navlink:hover {
+    color: var(--clr-dark);
+    background-color: var(--clr-light);
+    border: 2px solid var(--clr-light);
+}
+
+.darkTheme .table {
+    background-color: #eeeeee;
+}
+
+.darkTheme .h1 {
+    color: #eeeeee;
 }

@@ -14,7 +14,7 @@ import axios from "axios";
 import Pdf from "./toPdf";
 import {usePDF} from "react-to-pdf";
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
-import Relationship from "./Relationship";
+import CellLink from "./CellLink";
 import { components } from 'react-select';
 import SortableComponent from "./sortableList";
 import {tab} from "@testing-library/user-event/dist/tab";
@@ -36,58 +36,9 @@ import Hamburger from "./img/Hamburger";
 
 const { SingleValue, Option } = components;
 
-const options = {
-  // default is `save`
-  method: 'open',
-  // default is Resolution.MEDIUM = 3, which should be enough, higher values
-  // increases the image quality but also the size of the PDF, so be careful
-  // using values higher than 10 when having multiple pages generated, it
-  // might cause the page to crash or hang.
-  resolution: Resolution.HIGH,
-  page: {
-    // margin is in MM, default is Margin.NONE = 0
-    margin: Margin.SMALL,
-    // default is 'A4'
-    format: 'letter',
-    rotate: '90',
-    // default is 'portrait'
-    orientation: 'landscape',
-  },
-  canvas: {
-    // default is 'image/jpeg' for better size performance
-    mimeType: 'image/png',
-    qualityRatio: 1
-  },
-  // Customize any value passed to the jsPDF instance and html2canvas
-  // function. You probably will not need this and things can break,
-  // so use with caution.
-  overrides: {
-    // see https://artskydj.github.io/jsPDF/docs/jsPDF.html for more options
-    pdf: {
-      compress: true
-    },
-    // see https://html2canvas.hertzen.com/configuration for more options
-    canvas: {
-      useCORS: true
-    }
-  },
-};
 const getTargetElement = () => document.getElementById('target-ref');
 
-
-const plus = require('./newSymbols/plus.png');
-const square = require('./newSymbols/square.png');
-const cross = require('./symbols/cross.png');
-const star = require('./newSymbols/star.png');
-const arrow = require('./newSymbols/arrow.png');
-const circle = require('./newSymbols/circle.png');
-const triangle = require('./newSymbols/triangle_re.png');
-const diamond = require('./newSymbols/diamond.png');
-const hash = require('./symbols/hash.png');
-const astarisk = require('./newSymbols/astarisk.png');
-const check = require('./newSymbols/check.png');
-
-const dice = require('./symbols/dice3.png');
+// Different symbols
 
 const cc = require('./symbols/mark_cc.png');
 const lc = require('./symbols/mark_lc.png');
@@ -98,7 +49,7 @@ const rv = require('./symbols/mark_rv_lu.png');
 const rv_lu = require('./symbols/mark_rv_lu.png');
 const rv_lurd = require('./symbols/mark_rv_lurd.png');
 const rv_rb = require('./symbols/mark_rv_rb.png');
-const rv_ruld = require('./symbols/mark_rv_ruld - コピー.png');
+const rv_ruld = require('./symbols/mark_rv_ruld.png');
 
 
 
@@ -108,8 +59,8 @@ const rv_ruld = require('./symbols/mark_rv_ruld - コピー.png');
 
 // const tableRef = useRef();
 
+// Different cases for columns and cells
 function reducer(state, action) {
-  // Handles different cases for columns and cells
   switch (action.type) {
     case "add_option_to_column":
       const optionIndex = state.columns.findIndex(
@@ -131,19 +82,20 @@ function reducer(state, action) {
         ]
       };
     case "add_row":
-      console.log('uuden rivin lisays');
+      console.log('new row added');
       const newWork = {
         work1_name: '',
         work2_name: '',
         work3_name: '',
         work4_name:''
       }
-      console.log('moi');
       console.log(state.data);
       console.log(state.data);
 
 
 
+      // this code is commented because at the moment, the backend isn't utilized.
+      // if it were, this is called the save new work types in to a database.
       /*
       work_types_service.create(newWork)
           .then(response => {
@@ -156,7 +108,7 @@ function reducer(state, action) {
        */
 
 
-      console.log('saving ', newWork)
+      // console.log('saving ', newWork)
       /*
             data: state.data.map((row) => ({
               ...row,
@@ -173,25 +125,6 @@ function reducer(state, action) {
           (column) => column.id === action.columnId
       );
       switch (action.dataType) {
-        case "number":
-          if (state.columns[typeIndex].dataType === "number") {
-            return state;
-          } else {
-            return {
-              ...state,
-              columns: [
-                ...state.columns.slice(0, typeIndex),
-                { ...state.columns[typeIndex], dataType: action.dataType },
-                ...state.columns.slice(typeIndex + 1, state.columns.length)
-              ],
-              data: state.data.map((row) => ({
-                ...row,
-                [action.columnId]: isNaN(row[action.columnId])
-                    ? ""
-                    : Number.parseInt(row[action.columnId])
-              }))
-            };
-          }
         case "select":
           if (state.columns[typeIndex].dataType === "select") {
             return {
@@ -204,58 +137,7 @@ function reducer(state, action) {
               skipReset: true
             };
           } else {
-            const options = [
-              {
-                value: 0,
-                label: plus,
-                image: plus,
-              },
-              {
-                value: 1,
-                image: square,
-                label: square,
-              },
-              {
-                value: 2,
-                image: circle,
-                label: circle,
-              },
-              {
-                value: 3,
-                image: star,
-                label: star,
-              },
-              {
-                value: 4,
-                image: check,
-                label: check,
-              },
-              {
-                value: 5,
-                image: arrow,
-                label: arrow,
-              },
-              {
-                value: 6,
-                image: astarisk,
-                label: astarisk,
-              },
-              {
-                value: 7,
-                label: cross,
-                image: cross,
-              },
-              {
-                value: 8,
-                image: triangle,
-                label: triangle,
-              },
-              {
-                value: 9,
-                image: hash,
-                label: hash,
-              }
-            ];
+            const options = [];
             state.data?.forEach((row) => {
               if (row[action.columnId]) {
                 options.push({
@@ -351,56 +233,63 @@ function reducer(state, action) {
             accessor: leftId,
             dataType: "text",
             created: action.focus && true,
-            options: [{
-              value: 0,
-              label: plus,
-              image: plus,
-            },
+            options: [
+              {
+                value: 0,
+                label: cc,
+                image: cc,
+              },
               {
                 value: 1,
-                image: square,
-                label: square,
+                label: lc,
+                image: lc,
               },
               {
                 value: 2,
-                image: circle,
-                label: circle,
+                label: lu,
+                image: lu,
               },
               {
                 value: 3,
-                image: star,
-                label: star,
+                label: rb,
+                image: rb,
               },
               {
                 value: 4,
-                image: check,
-                label: check,
+                label: rc,
+                image: rc,
               },
               {
                 value: 5,
-                image: arrow,
-                label: arrow,
+                label: rc,
+                image: rc,
               },
               {
                 value: 6,
-                image: astarisk,
-                label: astarisk,
+                label: rv,
+                image: rv,
               },
               {
                 value: 7,
-                label: cross,
-                image: cross,
+                label: rv_lu,
+                image: rv_lu,
               },
               {
                 value: 8,
-                image: triangle,
-                label: triangle,
+                label: rv_lurd,
+                image: rv_lurd,
               },
               {
                 value: 9,
-                image: hash,
-                label: hash,
-              }]
+                label: rv_rb,
+                image: rv_rb,
+              },
+              {
+                value: 10,
+                label: rv_lurd,
+                image: rv_lurd,
+              }
+            ]
           },
           ...state.columns.slice(leftIndex, state.columns.length)
         ]
@@ -421,56 +310,63 @@ function reducer(state, action) {
             accessor: rightId,
             dataType: "text",
             created: action.focus && true,
-            options: [{
-              value: 0,
-              label: plus,
-              image: plus,
-            },
+            options: [
+              {
+                value: 0,
+                label: cc,
+                image: cc,
+              },
               {
                 value: 1,
-                image: square,
-                label: square,
+                label: lc,
+                image: lc,
               },
               {
                 value: 2,
-                image: circle,
-                label: circle,
+                label: lu,
+                image: lu,
               },
               {
                 value: 3,
-                image: star,
-                label: star,
+                label: rb,
+                image: rb,
               },
               {
                 value: 4,
-                image: check,
-                label: check,
+                label: rc,
+                image: rc,
               },
               {
                 value: 5,
-                image: arrow,
-                label: arrow,
+                label: rc,
+                image: rc,
               },
               {
                 value: 6,
-                image: astarisk,
-                label: astarisk,
+                label: rv,
+                image: rv,
               },
               {
                 value: 7,
-                label: cross,
-                image: cross,
+                label: rv_lu,
+                image: rv_lu,
               },
               {
                 value: 8,
-                image: triangle,
-                label: triangle,
+                label: rv_lurd,
+                image: rv_lurd,
               },
               {
                 value: 9,
-                image: hash,
-                label: hash,
-              }]
+                label: rv_rb,
+                image: rv_rb,
+              },
+              {
+                value: 10,
+                label: rv_lurd,
+                image: rv_lurd,
+              }
+            ]
           },
           ...state.columns.slice(rightIndex + 1, state.columns.length)
         ]
@@ -590,7 +486,7 @@ function App() {
     }
     // tableData.push(newData);
     setTableData([...tableData, newData]);
-    console.log(tableData.length + 'NYKYINEN PITUUS');
+    console.log(tableData.length + '= Current height');
 
     const tableH = document.getElementById('targetContainer');
     console.log(parseInt(tableH.style.height));
@@ -651,12 +547,13 @@ function App() {
 
     document.querySelectorAll('*').forEach(el => {
       if (el.offsetWidth > document.documentElement.offsetWidth) {
-        console.log('Found the worst element ever: ', el);
+        console.log('Found the overflow: ', el);
       }
     });
   }
+  // Used for updating the data.
   const updateMyData = (rowIndex, columnId, value) => {
-    // We also turn on the flag to not reset the page
+    // not reset the page
     setSkipPageReset(true)
     setTableData(old =>
         old.map((row, index) => {
@@ -719,12 +616,12 @@ function App() {
   ];
 
 
+  // Options for the pdf download
   const Options = {
     method: 'open',
     resolution: Resolution.LOW,
     page: {
       margin: Margin.NONE,
-      // pitäisi olla a4 käännettynä
       format: 'A4',
       orientation: 'landscape',
     },
@@ -881,7 +778,7 @@ function App() {
   const tableRef = useRef();
 
   const ChangeRowHeight = () => {
-    console.log('Muutetaan rivien korkeutta');
+    console.log('Changing row heights');
     // tableRef.current.getElementsByClassName('.tr').style.height=10 + 'px';
     // tableRef.current.getElementsByClassName('.tr').style.height=10+'px';
     // document.querySelectorAll('.table td').height = 10 + 'px';
@@ -894,8 +791,10 @@ function App() {
     //document.getElementsByClassName('.tr').style.height=10 + 'px';
   }
 
+  // Slider for changing table row heights
   const tableSlider = document.getElementById('tableSlider');
 
+  // Text for button for changing the options
   const [btnText, setBtnText] = useState('Hide Options');
 
   // Changes the text according to the current selection.
@@ -927,17 +826,6 @@ function App() {
     // document.getElementById('headers').style.display='none';
   }
 
-  const vaihdaFont = () => {
-    const n = document.getElementsByClassName('.data-input')[0];
-    n.fontSize=50;
-  }
-
-  const handleHeightSubmit = (e) => {
-    e.preventDefault();
-    if(lkm <= 2){
-      prompt('If you want to enter up to 2 rows, the optimal height would be around 78mm.');
-    }
-  }
 
 
   const toggleMenu = (event) => {

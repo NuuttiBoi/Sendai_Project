@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ContentEditable from "react-contenteditable";
-import Relationship from "./Relationship";
+import CellLink from "./CellLink";
 import {usePopper} from "react-popper";
 import {grey} from "./colors";
 import PlusIcon from "./img/Plus";
@@ -118,7 +118,7 @@ export default function Cell({value: initialValue, row: {index}, column: {id, da
                         ref={setSelectRef}
                         className='cell-padding d-flex cursor-default align-items-center flex-1'
                         onClick={() => setShowSelect(true)}>
-                        {value.value && <Relationship value={value.value} backgroundColor={getColor()} />}
+                        {value.value && <CellLink value={value.value} backgroundColor={getColor()} />}
                     </div>
                     {showSelect && <div className='overlay' onClick={() => setShowSelect(false)} />}
                     {showSelect && (
@@ -142,7 +142,7 @@ export default function Cell({value: initialValue, row: {index}, column: {id, da
                                             setValue({value: option.label, update: true});
                                             setShowSelect(false);
                                         }}>
-                                        <Relationship value={option.label} backgroundColor={option.backgroundColor} />
+                                        <CellLink value={option.label} backgroundColor={option.backgroundColor} />
                                     </div>
                                 ))}
                                 {showAdd && (

@@ -37,7 +37,7 @@ export default function Header({
                 setExpanded(false);
             },
             icon: <ArrowUpIcon />,
-            label: "Sort ascending"
+            label: "Sort asc"
         },
         {
             onClick: (e) => {
@@ -46,7 +46,7 @@ export default function Header({
                 setExpanded(false);
             },
             icon: <ArrowDownIcon />,
-            label: "Sort descending"
+            label: "Sort desc"
         },
         {
             onClick: (e) => {
@@ -178,8 +178,9 @@ export default function Header({
                                     onKeyDown={handleKeyDown}
                                 />
                             </div>
-                            <span className='font-weight-600 font-size-75' style={{textTransform: "uppercase", color: grey(500)}}>
-                Property Type
+                            <span className='font-weight-600 font-size-75'
+                                  style={{textTransform: "uppercase", color: 'black'}}>
+                Type:
               </span>
                         </div>
                         <div style={{padding: "4px 0px"}}>
@@ -213,8 +214,13 @@ export default function Header({
                                         </button>
                                     ))}
                                 </div>
+
                             )}
                         </div>
+                        <span className='font-weight-600 font-size-75'
+                              style={{textTransform: "uppercase", color: 'black', marginLeft:10}}>
+                Options:
+              </span>
                         <div
                             key={shortId()}
                             style={{
@@ -228,6 +234,7 @@ export default function Header({
                                 </button>
                             ))}
                         </div>
+
                     </div>
                 </div>
             )}

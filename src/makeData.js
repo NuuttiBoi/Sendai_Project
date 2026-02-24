@@ -1,23 +1,17 @@
 import { faker } from '@faker-js/faker';
-import {randomColor} from "./utils";
 import {useEffect, useState} from "react";
 import axios from 'axios';
 
-const hearts = require('./symbols/hearts.png');
-const square = require('./newSymbols/square.png');
-const cross = require('./symbols/cross.png');
-const spiral = require('./symbols/spiral.png');
-const star = require('./newSymbols/star.png');
-const arrow = require('./newSymbols/arrow.png');
-const circle = require('./newSymbols/circle.png');
-const flower = require('./symbols/flower.png');
-const triangle = require('./newSymbols/triangle_re.png');
-const club = require('./symbols/club.png');
-const diamond = require('./newSymbols/diamond.png');
-const hash = require('./newSymbols/hash.png');
-const astarisk = require('./newSymbols/astarisk.png');
-const check = require('./newSymbols/check.png');
-
+const cc = require('./symbols/mark_cc.png');
+const lc = require('./symbols/mark_lc.png');
+const lu = require('./symbols/mark_lu_b.png');
+const rb = require('./symbols/mark_rb_b.png');
+const rc = require('./symbols/mark_rc.png');
+const rv = require('./symbols/mark_rv_lu.png');
+const rv_lu = require('./symbols/mark_rv_lu.png');
+const rv_lurd = require('./symbols/mark_rv_lurd.png');
+const rv_rb = require('./symbols/mark_rv_rb.png');
+const rv_ruld = require('./symbols/mark_rv_ruld.png');
 
 
 
@@ -29,16 +23,16 @@ export default function MakeData(count) {
     let kuvat = [];
 
     kuvat = [
-        kuvat[0] = circle,
-        kuvat[1] = star,
-        kuvat[2] = astarisk,
-        kuvat[3] = square,
-        kuvat[4] = check,
-        kuvat[5] = hearts,
-        kuvat[6] = hash,
-        kuvat[7] = arrow,
-        kuvat[8] = cross,
-        kuvat[9] = triangle
+        kuvat[0] = cc,
+        kuvat[1] = lc,
+        kuvat[2] = lu,
+        kuvat[3] = rb,
+        kuvat[4] = rc,
+        kuvat[5] = rv,
+        kuvat[6] = rv_lu,
+        kuvat[7] = rv_lurd,
+        kuvat[8] = rv_rb,
+        kuvat[9] = rv_ruld
     ]
 
     for (let j = 0; j < kuvat.length; j++) {
