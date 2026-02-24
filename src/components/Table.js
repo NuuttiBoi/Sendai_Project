@@ -3,13 +3,18 @@ import clsx from "clsx";
 import {useTable, useFlexLayout, useResizeColumns, useSortBy} from "react-table";
 import Cell from "./Cell";
 import Header from "./Header";
-import PlusIcon from "./img/Plus";
-import Trash from "./img/Trash";
-import kuva from "./img/circle.png";
+import PlusIcon from "../img/Plus";
+import Trash from "../img/Trash";
+import kuva from "../img/circle.png";
 import Slider from "./Slider";
 import slider from "./Slider";
 import ReactSlider from "react-slider";
 import {usePopper} from "react-popper";
+
+/**
+ * Class that defines the table for marking work types.
+ */
+
 
 const defaultColumn = {
     minWidth: 50,

@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * Class that defines the color themes for the application.
+ */
+
 const ColorThemes = () => {
     const [lightTheme, setLightTheme] = useState(false)
     const [darkTheme, setDarkTheme] = useState(false)

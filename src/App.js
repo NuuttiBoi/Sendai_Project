@@ -4,16 +4,16 @@ import Select from 'react-select';
 import ReactSlider from "react-slider";
 import jsPDF from "jspdf";
 import "./style.css";
-import MakeData from "./makeData";
-import Table from "./Table";
+import MakeData from "./components/makeData";
+import Table from "./components/Table";
 import { randomColor, shortId } from "./utils";
 import { grey } from "./colors";
-import Slider  from "./Slider";
+import Slider  from "./components/Slider";
 import axios from "axios";
-import Pdf from "./toPdf";
+import Pdf from "./components/toPdf";
 import {usePDF} from "react-to-pdf";
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
-import CellLink from "./CellLink";
+import CellLink from "./components/CellLink";
 import { components } from 'react-select';
 import {tab} from "@testing-library/user-event/dist/tab";
 import nanoid from "nanoid";
@@ -22,11 +22,11 @@ import './Darkmode/darkmode.css'
 
 import { rotatePlugin } from '@react-pdf-viewer/rotate';
 import { Viewer } from '@react-pdf-viewer/core';
-import slider from "./Slider";
-import YoutubeEmbed from "./YoutubeEmbed";
+import slider from "./components/Slider";
+import YoutubeEmbed from "./components/YoutubeEmbed";
 import {BrowserRouter, Navigate, NavLink, Route, Routes} from "react-router-dom";
-import Footer from "./Footer";
-import Navigation from "./Navigation";
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 import Hamburger from "./img/Hamburger";
 
 

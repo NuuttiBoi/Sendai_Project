@@ -2,10 +2,14 @@ import React, {useEffect, useState} from "react";
 import ContentEditable from "react-contenteditable";
 import CellLink from "./CellLink";
 import {usePopper} from "react-popper";
-import {grey} from "./colors";
-import PlusIcon from "./img/Plus";
-import {randomColor} from "./utils";
-import Trash from "./img/Trash";
+import {grey} from "../colors";
+import PlusIcon from "../img/Plus";
+import {randomColor} from "../utils";
+import Trash from "../img/Trash";
+
+/**
+ * Class that defines the cells for the table.
+ */
 
 export default function Cell({value: initialValue, row: {index}, column: {id, dataType, options}, dataDispatch}) {
     const [value, setValue] = useState({value: initialValue, update: false});

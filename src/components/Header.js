@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from "react";
 import {usePopper} from "react-popper";
-import {grey} from "./colors";
-import ArrowUpIcon from "./img/ArrowUp";
-import ArrowDownIcon from "./img/ArrowDown";
-import ArrowLeftIcon from "./img/ArrowLeft";
-import ArrowRightIcon from "./img/ArrowRight";
-import TrashIcon from "./img/Trash";
+import {grey} from "../colors";
+import ArrowUpIcon from "../img/ArrowUp";
+import ArrowDownIcon from "../img/ArrowDown";
+import ArrowLeftIcon from "../img/ArrowLeft";
+import ArrowRightIcon from "../img/ArrowRight";
+import TrashIcon from "../img/Trash";
 import TextIcon from "./Text";
-import MultiIcon from "./img/Multi";
-import HashIcon from "./img/Hash";
-import PlusIcon from "./img/Plus";
-import {shortId} from "./utils";
+import MultiIcon from "../img/Multi";
+import HashIcon from "../img/Hash";
+import PlusIcon from "../img/Plus";
+import {shortId} from "../utils";
+
+/**
+ * Class that defines the header for the application.
+ */
 
 export default function Header({
                                    column: {id, created, label, dataType, getResizerProps, getHeaderProps},

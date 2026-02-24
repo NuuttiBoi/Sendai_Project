@@ -2,16 +2,16 @@ import { faker } from '@faker-js/faker';
 import {useEffect, useState} from "react";
 import axios from 'axios';
 
-const cc = require('./symbols/mark_cc.png');
-const lc = require('./symbols/mark_lc.png');
-const lu = require('./symbols/mark_lu_b.png');
-const rb = require('./symbols/mark_rb_b.png');
-const rc = require('./symbols/mark_rc.png');
-const rv = require('./symbols/mark_rv_lu.png');
-const rv_lu = require('./symbols/mark_rv_lu.png');
-const rv_lurd = require('./symbols/mark_rv_lurd.png');
-const rv_rb = require('./symbols/mark_rv_rb.png');
-const rv_ruld = require('./symbols/mark_rv_ruld.png');
+const cc = require('../symbols/mark_cc.png');
+const lc = require('../symbols/mark_lc.png');
+const lu = require('../symbols/mark_lu_b.png');
+const rb = require('../symbols/mark_rb_b.png');
+const rc = require('../symbols/mark_rc.png');
+const rv = require('../symbols/mark_rv_lu.png');
+const rv_lu = require('../symbols/mark_rv_lu.png');
+const rv_lurd = require('../symbols/mark_rv_lurd.png');
+const rv_rb = require('../symbols/mark_rv_rb.png');
+const rv_ruld = require('../symbols/mark_rv_ruld.png');
 
 
 

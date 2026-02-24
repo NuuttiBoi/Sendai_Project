@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import {useState} from "react";
 import {useEffect} from "react"
 import React from 'react';
-import Hamburger from "./img/Hamburger";
+import Hamburger from "../img/Hamburger";
 
 const Navigation = () => {
     const [darkMode, setDarkMode] = useState(true);

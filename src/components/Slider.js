@@ -1,7 +1,9 @@
 import ReactSlider from "react-slider";
 import { useState } from "react";
 
-// Slider for adjustomg the size of the video frame
+/**
+ * Slider for adjusting the size of the video frame.
+ */
 const Slider = () => {
     const [currentValue, setCurrentValue] = useState(0);
 
