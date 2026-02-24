@@ -9,7 +9,6 @@ import kuva from "./img/circle.png";
 import Slider from "./Slider";
 import slider from "./Slider";
 import ReactSlider from "react-slider";
-import TableSlider from "./TableSlider";
 import {usePopper} from "react-popper";
 
 const defaultColumn = {

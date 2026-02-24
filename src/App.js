@@ -2,7 +2,6 @@ import React, {useEffect, useLayoutEffect, useReducer, useState} from "react";
 import {useRef} from "react";
 import Select from 'react-select';
 import ReactSlider from "react-slider";
-import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 import jsPDF from "jspdf";
 import "./style.css";
 import MakeData from "./makeData";
@@ -16,7 +15,6 @@ import {usePDF} from "react-to-pdf";
 import generatePDF, { Resolution, Margin } from 'react-to-pdf';
 import CellLink from "./CellLink";
 import { components } from 'react-select';
-import SortableComponent from "./sortableList";
 import {tab} from "@testing-library/user-event/dist/tab";
 import nanoid from "nanoid";
 import './Darkmode/darkmode.css'
